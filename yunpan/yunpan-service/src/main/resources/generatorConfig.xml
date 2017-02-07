@@ -1,0 +1,45 @@
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<classPathEntry location="D:\ojdbc14-10.2.0.2.0.jar" />
+
+	<context id="mysql" targetRuntime="MyBatis3">
+
+		<commentGenerator>
+			<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+
+
+		<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+			connectionURL="jdbc:oracle:thin:@192.168.2.242:1521:funddb" userId="funduser"
+			password="funduser">
+		</jdbcConnection>
+
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- generate Model -->
+		<javaModelGenerator targetPackage="com.kjt.fund.core.dal.dataobject"
+			targetProject=".\src\main\java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!-- generate xml -->
+		<sqlMapGenerator targetPackage="src/main/resources/META-INF/sqlmap"
+			targetProject=".\">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<table schema="" tableName="T_FUND_CALENDAR" domainObjectName="FundCalendar"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false" />
+
+	</context>
+</generatorConfiguration>

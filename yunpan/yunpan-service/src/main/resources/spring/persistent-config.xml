@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+    <description>数据源及事务配置</description>
+
+    <!-- ************************************************************************************************* -->
+    <!-- *                                        MyBatis 配置                                                                                       * -->
+    <!-- ************************************************************************************************* -->
+    <!-- 配置sqlSessionFactory -->
+    <!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 --> 
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 代理数据源 -->
+        <property name="dataSource" ref="proxyDataSource"/>
+        <!-- 指定Mapper文件位置 -->
+        <!-- 自动扫描mapping.xml文件 --> 
+        <property name="mapperLocations" value="classpath*:/mybatis/mappers/*Mapper.xml"/>
+        <!-- 指定mybatis配置位置 -->
+        <property name="configLocation" value="classpath:/mybatis/mybatis-config.xml"/>
+    </bean>
+
+    <!-- 扫描basePackage下所有以@MyBatisRepository标识的 接口-->
+    <!-- DAO接口所在包名，Spring会自动查找其下的类 --> 
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.haier.hairy.fund.yingmi.db"/>
+    </bean>
+
+
+    <!-- ************************************************************************************************* -->
+    <!-- *                                        事务配置                                                                                                * -->
+    <!-- ************************************************************************************************* -->
+    <!-- 事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="proxyDataSource"/>
+    </bean>
+
+    <!-- 使用@Transactional标注事务(代理模式为CGLIB动态代理) -->
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+
+
+    <!-- ************************************************************************************************* -->
+    <!-- *                                        数据源配置                                                                                            * -->
+    <!-- ************************************************************************************************* -->
+    <!-- 代理datasource，使其能够显式获取preparedStatement的参数值 -->
+    <bean id="proxyDataSource" class="org.jdbcdslog.ConnectionPoolDataSourceProxy">
+        <property name="targetDSDirect" ref="dataSource"/>
+    </bean>
+
+    <!-- 数据源配置, 使用 阿里 数据库连接池 -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <!-- 数据源驱动类可不写，Druid默认会自动根据URL识别DriverClass -->
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <!-- 基本属性 url、user、password -->
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+
+        <!-- 配置初始化大小、最小、最大 -->
+        <property name="initialSize" value="1"/>
+        <property name="minIdle" value="1"/>
+        <property name="maxActive" value="50"/>
+
+        <!-- 配置获取连接等待超时的时间 -->
+        <property name="maxWait" value="60000"/>
+
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <property name="timeBetweenEvictionRunsMillis" value="60000"/>
+
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+        <property name="minEvictableIdleTimeMillis" value="300000"/>
+
+        <property name="validationQuery" value="SELECT 'x' FROM DUAL"/>
+        <property name="testWhileIdle" value="true"/>
+        <property name="testOnBorrow" value="false"/>
+        <property name="testOnReturn" value="false"/>
+
+        <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
+        <property name="poolPreparedStatements" value="true"/>
+        <property name="maxPoolPreparedStatementPerConnectionSize" value="20"/>
+
+        <!-- 配置监控统计拦截的filters -->
+        <property name="filters" value="stat"/>
+        <property name="proxyFilters">
+            <list>
+                <ref bean="druidStatFilter"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="druidStatFilter" class="com.alibaba.druid.filter.stat.StatFilter">
+        <!-- 慢SQL记录 -->
+        <property name="slowSqlMillis" value="3000" />
+        <property name="logSlowSql" value="true" />
+
+        <!-- SQL合并配置 -->
+        <property name="mergeSql" value="true"/>
+    </bean>
+
+</beans>
