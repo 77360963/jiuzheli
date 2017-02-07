@@ -14,7 +14,7 @@ out/
 *.bak
 .DS_Store
 *.class
-
+Servers/
 # Package Files #
 *.jar
 *.war
