@@ -262,6 +262,13 @@
 				<version>${junit.version}</version>
 				<scope>test</scope>
 			</dependency>
+			
+			<dependency>
+			   <groupId>www.yunpan.com</groupId>
+			   <artifactId>yunpan-service</artifactId>
+			   <version>${project.version}</version>
+			</dependency>
+			
 		</dependencies>
 	</dependencyManagement>
 

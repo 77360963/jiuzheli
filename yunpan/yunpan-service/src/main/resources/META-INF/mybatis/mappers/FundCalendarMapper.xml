@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="www.yunpan.com.db.FundCalendarDao" >
+  <resultMap id="BaseResultMap" type="www.yunpan.com.entity.FundCalendar" >
+    <id column="CALENDAR_ID" property="calendarId" jdbcType="VARCHAR" />
+    <result column="CUR_DATE" property="curDate" jdbcType="VARCHAR" />
+    <result column="PROFIT_DATE" property="profitDate" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="MEMO" property="memo" jdbcType="VARCHAR" />
+    <result column="IS_HOLIDAY" property="isHoliday" jdbcType="VARCHAR" />
+    <result column="ACCOUNT_BEGIN_DATE" property="accountBeginDate" jdbcType="VARCHAR" />
+    <result column="ACCOUNT_END_DATE" property="accountEndDate" jdbcType="VARCHAR" />
+    <result column="TRANS_ARR_DATE_BUY" property="transArrDateBuy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CALENDAR_ID, CUR_DATE, PROFIT_DATE, CREATE_TIME, MEMO, IS_HOLIDAY, ACCOUNT_BEGIN_DATE, 
+    ACCOUNT_END_DATE, TRANS_ARR_DATE_BUY
+  </sql>
+   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_FUND_CALENDAR
+    where CALENDAR_ID = #{calendarId,jdbcType=VARCHAR}
+  </select>
+  <select id="queryFundCalendar" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from T_FUND_CALENDAR    
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from T_FUND_CALENDAR
+    where CALENDAR_ID = #{calendarId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="www.yunpan.com.entity.FundCalendar" >
+    insert into T_FUND_CALENDAR (CALENDAR_ID, CUR_DATE, PROFIT_DATE, 
+      CREATE_TIME, MEMO, IS_HOLIDAY, 
+      ACCOUNT_BEGIN_DATE, ACCOUNT_END_DATE, TRANS_ARR_DATE_BUY
+      )
+    values (#{calendarId,jdbcType=VARCHAR}, #{curDate,jdbcType=VARCHAR}, #{profitDate,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{memo,jdbcType=VARCHAR}, #{isHoliday,jdbcType=VARCHAR}, 
+      #{accountBeginDate,jdbcType=VARCHAR}, #{accountEndDate,jdbcType=VARCHAR}, #{transArrDateBuy,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="www.yunpan.com.entity.FundCalendar" >
+    insert into T_FUND_CALENDAR
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="calendarId != null" >
+        CALENDAR_ID,
+      </if>
+      <if test="curDate != null" >
+        CUR_DATE,
+      </if>
+      <if test="profitDate != null" >
+        PROFIT_DATE,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="memo != null" >
+        MEMO,
+      </if>
+      <if test="isHoliday != null" >
+        IS_HOLIDAY,
+      </if>
+      <if test="accountBeginDate != null" >
+        ACCOUNT_BEGIN_DATE,
+      </if>
+      <if test="accountEndDate != null" >
+        ACCOUNT_END_DATE,
+      </if>
+      <if test="transArrDateBuy != null" >
+        TRANS_ARR_DATE_BUY,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="calendarId != null" >
+        #{calendarId,jdbcType=VARCHAR},
+      </if>
+      <if test="curDate != null" >
+        #{curDate,jdbcType=VARCHAR},
+      </if>
+      <if test="profitDate != null" >
+        #{profitDate,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="memo != null" >
+        #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="isHoliday != null" >
+        #{isHoliday,jdbcType=VARCHAR},
+      </if>
+      <if test="accountBeginDate != null" >
+        #{accountBeginDate,jdbcType=VARCHAR},
+      </if>
+      <if test="accountEndDate != null" >
+        #{accountEndDate,jdbcType=VARCHAR},
+      </if>
+      <if test="transArrDateBuy != null" >
+        #{transArrDateBuy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="www.yunpan.com.entity.FundCalendar" >
+    update T_FUND_CALENDAR
+    <set >
+      <if test="curDate != null" >
+        CUR_DATE = #{curDate,jdbcType=VARCHAR},
+      </if>
+      <if test="profitDate != null" >
+        PROFIT_DATE = #{profitDate,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="memo != null" >
+        MEMO = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="isHoliday != null" >
+        IS_HOLIDAY = #{isHoliday,jdbcType=VARCHAR},
+      </if>
+      <if test="accountBeginDate != null" >
+        ACCOUNT_BEGIN_DATE = #{accountBeginDate,jdbcType=VARCHAR},
+      </if>
+      <if test="accountEndDate != null" >
+        ACCOUNT_END_DATE = #{accountEndDate,jdbcType=VARCHAR},
+      </if>
+      <if test="transArrDateBuy != null" >
+        TRANS_ARR_DATE_BUY = #{transArrDateBuy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CALENDAR_ID = #{calendarId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="www.yunpan.com.entity.FundCalendar" >
+    update T_FUND_CALENDAR
+    set CUR_DATE = #{curDate,jdbcType=VARCHAR},
+      PROFIT_DATE = #{profitDate,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      MEMO = #{memo,jdbcType=VARCHAR},
+      IS_HOLIDAY = #{isHoliday,jdbcType=VARCHAR},
+      ACCOUNT_BEGIN_DATE = #{accountBeginDate,jdbcType=VARCHAR},
+      ACCOUNT_END_DATE = #{accountEndDate,jdbcType=VARCHAR},
+      TRANS_ARR_DATE_BUY = #{transArrDateBuy,jdbcType=VARCHAR}
+    where CALENDAR_ID = #{calendarId,jdbcType=VARCHAR}
+  </update>
+</mapper>

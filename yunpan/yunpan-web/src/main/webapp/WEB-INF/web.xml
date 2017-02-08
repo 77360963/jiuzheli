@@ -7,8 +7,13 @@
 <!--  Spring 服务层的配置文件 -->
  <context-param>
      <param-name>contextConfigLocation</param-name>
-     <param-value>classpath:applicationContext.xml</param-value>
+     <param-value>classpath:META-INF/spring/applicationContext*.xml</param-value>
  </context-param>
+ 
+<context-param>
+	   <param-name>propertiesLocation_config</param-name>
+	   <param-value>file:f:/opt/pay/config/basis/yunpan/config.properties</param-value>	   
+</context-param>
  
  <!--  Spring 容器启动监听器 -->
  <listener>
@@ -20,7 +25,7 @@
       <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
       <init-param>
           <param-name> contextConfigLocation</param-name >
-          <param-value>classpath*:/springmvc-servlet.xml</param-value>
+          <param-value>classpath*:META-INF/spring/springmvc-servlet.xml</param-value>
       </init-param>      
       <load-on-startup>1</load-on-startup>
 </servlet>

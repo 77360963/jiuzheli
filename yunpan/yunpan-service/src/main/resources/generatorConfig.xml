@@ -31,7 +31,7 @@
 		</javaModelGenerator>
 
 		<!-- generate xml -->
-		<sqlMapGenerator targetPackage="src/main/resources/META-INF/sqlmap"
+		<sqlMapGenerator targetPackage="src/main/resources/META-INF/mybatis/mappers"
 			targetProject=".\">
 			<property name="enableSubPackages" value="true" />
 		</sqlMapGenerator>
