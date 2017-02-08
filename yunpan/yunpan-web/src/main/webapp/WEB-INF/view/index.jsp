@@ -4,6 +4,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-fffffffffffffff
+fffffffffffffff  ${token}
 </body>
 </html>
