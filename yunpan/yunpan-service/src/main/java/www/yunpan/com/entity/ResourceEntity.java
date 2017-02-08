@@ -1,12 +1,13 @@
 package www.yunpan.com.entity;
-//http://blog.csdn.net/driverking/article/details/6769553
-public class RoleEntity {
 
+public class ResourceEntity {
     private String id;
 
-    private String name;
+    private String uri;
 
     private String description;
+
+    private String permissionId;
 
     public String getId() {
         return id;
@@ -16,12 +17,12 @@ public class RoleEntity {
         this.id = id == null ? null : id.trim();
     }
 
-    public String getName() {
-        return name;
+    public String getUri() {
+        return uri;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setUri(String uri) {
+        this.uri = uri == null ? null : uri.trim();
     }
 
     public String getDescription() {
@@ -32,4 +33,11 @@ public class RoleEntity {
         this.description = description == null ? null : description.trim();
     }
 
+    public String getPermissionId() {
+        return permissionId;
+    }
+
+    public void setPermissionId(String permissionId) {
+        this.permissionId = permissionId == null ? null : permissionId.trim();
+    }
 }

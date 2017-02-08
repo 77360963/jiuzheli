@@ -1,41 +1,37 @@
 package www.yunpan.com.entity;
 
 public class UserEntity {
-	private Integer userId;
-	private String loginname;
-	private String username;
-	private String password;
+	
 
-	public Integer getUserId() {
-		return userId;
-	}
+    private String id;
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
+    private String username;
 
-	public String getLoginname() {
-		return loginname;
-	}
+    private String password;
 
-	public void setLoginname(String loginname) {
-		this.loginname = loginname;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public String getUsername() {
-		return username;
-	}
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
+    }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    public String getUsername() {
+        return username;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
+    }
+
 
 }

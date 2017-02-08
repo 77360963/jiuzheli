@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-	<classPathEntry location="D:\ojdbc14-10.2.0.2.0.jar" />
+	<classPathEntry location="D:\mysql-connector-java-5.1.25.jar" />
 
 	<context id="mysql" targetRuntime="MyBatis3">
 
@@ -13,9 +13,9 @@
 		</commentGenerator>
 
 
-		<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
-			connectionURL="jdbc:oracle:thin:@192.168.2.242:1521:funddb" userId="funduser"
-			password="funduser">
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://127.0.0.1:3306/test?characterEncoding=utf-8" userId="root"
+			password="">
 		</jdbcConnection>
 
 
@@ -36,7 +36,7 @@
 			<property name="enableSubPackages" value="true" />
 		</sqlMapGenerator>
 
-		<table schema="" tableName="T_FUND_CALENDAR" domainObjectName="FundCalendar"
+		<table schema="" tableName="permission" domainObjectName="Permission"
 			enableCountByExample="false" enableUpdateByExample="false"
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false" />

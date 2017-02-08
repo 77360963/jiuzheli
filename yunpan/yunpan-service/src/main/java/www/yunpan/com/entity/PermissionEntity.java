@@ -1,7 +1,6 @@
 package www.yunpan.com.entity;
-//http://blog.csdn.net/driverking/article/details/6769553
-public class RoleEntity {
 
+public class PermissionEntity {
     private String id;
 
     private String name;
@@ -31,5 +30,4 @@ public class RoleEntity {
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
     }
-
 }
