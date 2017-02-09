@@ -9,10 +9,10 @@ import www.yunpan.com.annotation.Token;
 import www.yunpan.com.entity.UserEntity;
 import www.yunpan.com.service.IUserService;
 
-
+@Controller
 public class UserController {
 	
-	/*@Autowired
+	@Autowired
 	private IUserService userService;	
 	
 	@RequestMapping(value="/addUser",method={RequestMethod.GET})
@@ -31,5 +31,5 @@ public class UserController {
 		userService.insertUser(user);
 		return "/view/index";
 	}
-*/
+
 }
