@@ -10,13 +10,20 @@
   <sql id="Base_Column_List" >
     id, uri, description, permission_id
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  
+  <select id="findAllResource" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from resource   
+  </select>
+  
+  <select id="findResourceById" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from resource
     where id = #{id,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <delete id="deleteResource" parameterType="java.lang.String" >
     delete from resource
     where id = #{id,jdbcType=VARCHAR}
   </delete>
@@ -38,7 +45,7 @@
       <if test="description != null" >
         description,
       </if>
-      <if test="permissionId != null" >
+      <if test="permissionId != null and permissionId!=''" >
         permission_id,
       </if>
     </trim>
@@ -52,7 +59,7 @@
       <if test="description != null" >
         #{description,jdbcType=VARCHAR},
       </if>
-      <if test="permissionId != null" >
+      <if test="permissionId != null and permissionId!=''" >
         #{permissionId,jdbcType=VARCHAR},
       </if>
     </trim>
@@ -72,11 +79,7 @@
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="www.yunpan.com.entity.ResourceEntity" >
-    update resource
-    set uri = #{uri,jdbcType=VARCHAR},
-      description = #{description,jdbcType=VARCHAR},
-      permission_id = #{permissionId,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=VARCHAR}
+  <update id="updateResourcePermission" parameterType="java.lang.String" >
+     update resource set permission_id=null where permission_id= #{permissionId,jdbcType=VARCHAR}   
   </update>
 </mapper>

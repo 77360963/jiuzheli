@@ -22,6 +22,9 @@ public interface IResourceDao {
     ResourceEntity findResourceById(String id);  
   
     // 删除资源  
-    void deleteResource(String id);  
+    void deleteResource(String id); 
+    
+    //删除权限时，更新资源权限
+    void updateResourcePermission(String permissionId);
 
 }

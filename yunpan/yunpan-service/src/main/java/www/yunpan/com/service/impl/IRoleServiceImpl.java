@@ -15,6 +15,8 @@ public class IRoleServiceImpl implements IRoleService {
 	@Autowired
 	private IRoleDao roleDao;
 	
+
+	
 	public void insertRole(RoleEntity role) {
 		roleDao.insertRole(role);
 
@@ -26,6 +28,7 @@ public class IRoleServiceImpl implements IRoleService {
 	}
 
 	public void deleteRole(String id) {
+	
 		roleDao.deleteRole(id);
 
 	}

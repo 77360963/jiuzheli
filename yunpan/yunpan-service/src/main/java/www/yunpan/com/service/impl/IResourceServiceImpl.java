@@ -16,7 +16,7 @@ public class IResourceServiceImpl implements IResourceService {
 	private IResourceDao resourceDao;
 
 	public void insertResource(ResourceEntity resource) {
-		// TODO Auto-generated method stub
+		resourceDao.insertResource(resource);
 
 	}
 
@@ -25,9 +25,8 @@ public class IResourceServiceImpl implements IResourceService {
 
 	}
 
-	public List<ResourceEntity> findAllResource() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ResourceEntity> findAllResource() {		
+		return resourceDao.findAllResource();
 	}
 
 	public ResourceEntity findResourceByURI(String uri) {
@@ -36,12 +35,11 @@ public class IResourceServiceImpl implements IResourceService {
 	}
 
 	public ResourceEntity findResourceById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return resourceDao.findResourceById(id);
 	}
 
 	public void deleteResource(String id) {
-		// TODO Auto-generated method stub
+		resourceDao.deleteResource(id);
 
 	}
 

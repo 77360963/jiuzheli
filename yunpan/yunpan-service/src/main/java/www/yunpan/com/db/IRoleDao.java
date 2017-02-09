@@ -19,6 +19,6 @@ public interface IRoleDao {
     RoleEntity findRoleById(String id);  
   
     // 查找所有角色  
-    List<RoleEntity> fineAllRole();  
+    List<RoleEntity> fineAllRole();
 
 }

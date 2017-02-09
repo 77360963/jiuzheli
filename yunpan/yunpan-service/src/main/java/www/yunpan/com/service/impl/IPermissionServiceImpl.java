@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import www.yunpan.com.db.IPermissionDao;
+import www.yunpan.com.db.IResourceDao;
 import www.yunpan.com.entity.PermissionEntity;
 import www.yunpan.com.service.IPermissionService;
 
@@ -15,13 +16,17 @@ public class IPermissionServiceImpl implements IPermissionService {
 	@Autowired
 	private IPermissionDao permissionDao;
 	
+	@Autowired
+	private IResourceDao resourceDao;
+	
 	public void insertPermission(PermissionEntity permission) {
-		// TODO Auto-generated method stub
+		permissionDao.insertPermission(permission);
 
 	}
 
 	public void deletePermission(String id) {
-		// TODO Auto-generated method stub
+		resourceDao.updateResourcePermission(id);
+		permissionDao.deletePermission(id);
 
 	}
 
@@ -31,8 +36,8 @@ public class IPermissionServiceImpl implements IPermissionService {
 	}
 
 	public List<PermissionEntity> findAllPermission() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return permissionDao.findAllPermission();
 	}
 
 }

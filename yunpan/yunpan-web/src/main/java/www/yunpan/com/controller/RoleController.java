@@ -6,12 +6,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import www.yunpan.com.annotation.Token;
+import www.yunpan.com.entity.RoleEntity;
 import www.yunpan.com.service.IRoleService;
 
-@Controller
+
 public class RoleController {
 	
-	@Autowired
+	/*@Autowired
 	private IRoleService roleService;	
 	
 	@RequestMapping(value="/addRole",method={RequestMethod.GET})
@@ -23,8 +24,9 @@ public class RoleController {
 	@RequestMapping(value="/saveRole",method={RequestMethod.POST})
 	@Token(remove=true)
 	public String saveRole(){
-		
+		RoleEntity roleEntity=new RoleEntity();
+		roleService.insertRole(roleEntity);
 		return "/view/index";
 	}
-
+*/
 }
