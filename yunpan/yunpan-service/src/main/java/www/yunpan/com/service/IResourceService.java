@@ -2,6 +2,7 @@ package www.yunpan.com.service;
 
 import java.util.List;
 
+import www.yunpan.com.domain.ResourceDomain;
 import www.yunpan.com.entity.ResourceEntity;
 
 public interface IResourceService {
@@ -13,7 +14,7 @@ public interface IResourceService {
     void updateResource(ResourceEntity resource);  
   
     // 查找所有资源  
-    List<ResourceEntity> findAllResource();  
+    List<ResourceDomain> findAllResource();  
   
     // 根据uri查找资源  
     ResourceEntity findResourceByURI(String uri);  

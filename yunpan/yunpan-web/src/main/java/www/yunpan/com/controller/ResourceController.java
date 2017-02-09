@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import www.yunpan.com.domain.ResourceDomain;
 import www.yunpan.com.entity.PermissionEntity;
 import www.yunpan.com.entity.ResourceEntity;
 import www.yunpan.com.form.ResourceForm;
@@ -45,9 +46,9 @@ public class ResourceController {
 	
 	@RequestMapping(value="/queryAllResource")	
 	public String queryAllResource(final ModelMap model){
-		List<ResourceEntity> resourceList=resourceService.findAllResource();
+		List<ResourceDomain> resourceList=resourceService.findAllResource();
 		model.addAttribute("resourceList", resourceList);
-		return "/view/index";
+		return "/view/resource";
 	}
 
 }

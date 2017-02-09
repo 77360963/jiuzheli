@@ -1,6 +1,6 @@
-package www.yunpan.com.entity;
+package www.yunpan.com.domain;
 
-public class ResourceEntity {
+public class ResourceDomain {
     private String id;
 
     private String uri;
@@ -8,6 +8,8 @@ public class ResourceEntity {
     private String description;
 
     private String permissionId;
+    
+    private PermissionDomain permission;
     
 
     public String getId() {
@@ -41,4 +43,14 @@ public class ResourceEntity {
     public void setPermissionId(String permissionId) {
         this.permissionId = permissionId == null ? null : permissionId.trim();
     }
+
+	public PermissionDomain getPermission() {
+		return permission;
+	}
+
+	public void setPermission(PermissionDomain permission) {
+		this.permission = permission;
+	}
+    
+    
 }
