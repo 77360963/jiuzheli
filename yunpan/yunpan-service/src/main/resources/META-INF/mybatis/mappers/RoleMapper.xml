@@ -9,6 +9,12 @@
   <sql id="Base_Column_List" >
     id, name, description
   </sql>
+  <select id="fineAllRole" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from role  
+  </select>
+  
   <select id="findRoleById" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />

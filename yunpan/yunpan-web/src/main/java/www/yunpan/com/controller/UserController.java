@@ -32,5 +32,11 @@ public class UserController {
 		userService.insertUser(user);
 		return "/view/index";
 	}
+	
+	@RequestMapping(value="/queryAllUser",method={RequestMethod.POST})
+	public String queryAllUser(@ModelAttribute("userForm") UserForm form){
+		
+		return "/view/user";
+	}
 
 }

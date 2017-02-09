@@ -10,7 +10,8 @@
   <body>  
      <table width="90%">  
         <tr>  
-            <td align="right">  
+            <td align="right"> 
+               <a href="<%=request.getContextPath()%>/addPermission.html">添加权限</a>   
             </td>  
         </tr>  
     </table>  

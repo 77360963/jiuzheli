@@ -4,31 +4,34 @@
     <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">  
     <html>  
       <head>  
-        <title>资源管理</title>  
+        <title>用户列表</title>  
       </head>  
         
       <body>  
          <table width="90%">  
             <tr>  
                 <td align="right">  
-                    <a href="<%=request.getContextPath()%>/addResource.html">添加资源</a>  
+                    <a href="">添加用户</a>  
                 </td>  
             </tr>  
         </table>  
+          
         <table frame="border" width="90%">  
             <tr>  
-                <td>资源URI</td>  
-                <td>资源描述</td>  
-                <td>管理资源的权限</td>  
+                <td>用户名称</td>  
+                <td>用户拥有的角色</td>  
                 <td>操作</td>  
             </tr>  
-            <c:forEach var="resource" items="${requestScope.resourceList}">  
+            <c:forEach var="u" items="${requestScope.user}">  
                 <tr>  
-                    <td>${resource.uri }</td>  
-                    <td>${resource.description }</td>  
-                    <td>${resource.permission.name}</td>  
+                    <td>${u.username }</td>  
                     <td>  
-                        <a href="">分配权限</a>  
+                        <c:forEach var="r" items="${u.roles}">  
+                            ${r.name }  
+                        </c:forEach>  
+                    </td>  
+                    <td>  
+                        <a href="">分配角色</a>  
                         <a href="">删除</a>  
                     </td>  
                 </tr>  
