@@ -11,6 +11,16 @@
     where role_id = #{roleId,jdbcType=VARCHAR}
   </delete>
   
+  
+   <delete id="deletePermissionPermission" parameterType="java.lang.String" >
+    delete from permission_role
+    where permission_id = #{permissionId,jdbcType=VARCHAR}
+  </delete>
+  
+  
+  
+  
+  
   <delete id="deleteByPrimaryKey" parameterType="www.yunpan.com.entity.PermissionRoleEntity" >
     delete from permission_role
     where permission_id = #{permissionId,jdbcType=VARCHAR}

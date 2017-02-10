@@ -3,6 +3,7 @@ package www.yunpan.com.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -55,11 +56,13 @@ public class IResourceServiceImpl implements IResourceService {
 		ResourceDomain resourceDomain=new ResourceDomain();			
 		ResourceEntity resourceEntity=resourceDao.findResourceByURI(uri);
 		if(null!=resourceEntity){
-			BeanUtils.copyProperties(resourceEntity, resourceDomain);			
-			PermissionEntity permissionEntity=permissionDao.findPermissionById(resourceEntity.getPermissionId());
-			PermissionDomain permissionDomain=new PermissionDomain();	
-			BeanUtils.copyProperties(permissionEntity, permissionDomain);
-			resourceDomain.setPermission(permissionDomain);
+			BeanUtils.copyProperties(resourceEntity, resourceDomain);
+			if(StringUtils.isNotBlank(resourceEntity.getPermissionId())){
+				PermissionEntity permissionEntity=permissionDao.findPermissionById(resourceEntity.getPermissionId());
+				PermissionDomain permissionDomain=new PermissionDomain();	
+				BeanUtils.copyProperties(permissionEntity, permissionDomain);
+				resourceDomain.setPermission(permissionDomain);
+			}			
 		}		
 		return resourceDomain;
 	}
@@ -67,10 +70,12 @@ public class IResourceServiceImpl implements IResourceService {
 	public ResourceDomain findResourceById(String id) {
 		ResourceDomain resourceDomain=new ResourceDomain();	
 		PermissionDomain permissionDomain=new PermissionDomain();	
-		ResourceEntity resourceEntity= resourceDao.findResourceById(id);		
-		PermissionEntity permissionEntity=permissionDao.findPermissionById(resourceEntity.getPermissionId());
-		BeanUtils.copyProperties(resourceEntity, resourceDomain);
-		BeanUtils.copyProperties(permissionEntity, permissionDomain);
+		ResourceEntity resourceEntity= resourceDao.findResourceById(id);
+		if(StringUtils.isNotBlank(resourceEntity.getPermissionId())){
+			PermissionEntity permissionEntity=permissionDao.findPermissionById(resourceEntity.getPermissionId());
+			BeanUtils.copyProperties(permissionEntity, permissionDomain);
+		}		
+		BeanUtils.copyProperties(resourceEntity, resourceDomain);		
 		resourceDomain.setPermission(permissionDomain);
 		return resourceDomain;
 	}

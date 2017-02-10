@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.plaf.ListUI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -48,7 +47,7 @@ public class OauthInterceptor extends HandlerInterceptorAdapter {
         UserEntity user =(UserEntity)request.getSession().getAttribute("user"); 
      // 如果没有登录则跳转登录页面  
         if (null==user) {  
-            request.getRequestDispatcher("/view/login.jsp").forward(request,response);  
+            response.sendRedirect(request.getContextPath()+"/login.html");
             return false;  
         }  
         

@@ -49,6 +49,7 @@ public class IUserServiceImpl implements IUserService {
 	}
 
 	public void deleteUser(String id) {
+		userRoleDao.deleteUserRole(id);
 		userDao.deleteUser(id);
 
 	}

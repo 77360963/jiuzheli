@@ -39,6 +39,11 @@ public class IndexController {
 		return "/view/login";
 	}
 	
+	@RequestMapping(value="/logout",method={RequestMethod.GET})
+	public String logout(HttpServletRequest request){
+		request.getSession().removeAttribute("user");
+		return "/view/login";
+	}
 	
 
 }
