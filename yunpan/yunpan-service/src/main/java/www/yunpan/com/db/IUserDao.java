@@ -22,6 +22,8 @@ public interface IUserDao {
     List<UserEntity> findAllUser();  
       
     //用户登录
-    UserEntity login(String username, String password);  
+    UserEntity login(UserEntity user);  
+    
+   
 
 }

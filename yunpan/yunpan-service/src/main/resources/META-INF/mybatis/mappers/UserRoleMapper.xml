@@ -5,12 +5,11 @@
     <id column="user_id" property="userId" jdbcType="VARCHAR" />
     <id column="role_id" property="roleId" jdbcType="VARCHAR" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="www.yunpan.com.entity.UserRoleEntity" >
+  <delete id="deleteUserRole" parameterType="www.yunpan.com.entity.UserRoleEntity" >
     delete from user_role
-    where user_id = #{userId,jdbcType=VARCHAR}
-      and role_id = #{roleId,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=VARCHAR}     
   </delete>
-  <insert id="insert" parameterType="www.yunpan.com.entity.UserRoleEntity" >
+  <insert id="insertUserRole" parameterType="www.yunpan.com.entity.UserRoleEntity" >
     insert into user_role (user_id, role_id)
     values (#{userId,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR})
   </insert>

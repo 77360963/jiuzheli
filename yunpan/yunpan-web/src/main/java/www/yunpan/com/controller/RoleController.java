@@ -62,6 +62,12 @@ public class RoleController {
 		return "redirect:/queryAllRole.html";
 	}
 	
+	@RequestMapping(value="/delRole")	
+	public String delResource(@RequestParam("id") String id){
+		roleService.deleteRole(id);		
+		return "redirect:/queryAllRole.html";
+	}
+	
 	
 	@RequestMapping(value="/rolePermission",method={RequestMethod.GET})
 	public String rolePermission(final ModelMap model,@RequestParam("id") String id){

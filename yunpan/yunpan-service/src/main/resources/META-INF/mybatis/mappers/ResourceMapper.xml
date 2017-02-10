@@ -17,6 +17,14 @@
     from resource   
   </select>
   
+   <select id="findResourceByURI" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from resource
+     where uri = #{uri,jdbcType=VARCHAR}   
+  </select>
+  
+  
   <select id="findResourceById" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />

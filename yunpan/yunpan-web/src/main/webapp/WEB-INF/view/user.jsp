@@ -11,7 +11,7 @@
          <table width="90%">  
             <tr>  
                 <td align="right">  
-                    <a href="">添加用户</a>  
+                    <a href="<%=request.getContextPath()%>/addUser.html">添加用户</a>  
                 </td>  
             </tr>  
         </table>  
@@ -22,17 +22,17 @@
                 <td>用户拥有的角色</td>  
                 <td>操作</td>  
             </tr>  
-            <c:forEach var="u" items="${requestScope.user}">  
+            <c:forEach var="u" items="${requestScope.userList}">  
                 <tr>  
                     <td>${u.username }</td>  
                     <td>  
-                        <c:forEach var="r" items="${u.roles}">  
+                       <%--  <c:forEach var="r" items="${u.roles}">  
                             ${r.name }  
-                        </c:forEach>  
+                        </c:forEach>   --%>
                     </td>  
                     <td>  
-                        <a href="">分配角色</a>  
-                        <a href="">删除</a>  
+                        <a href="<%=request.getContextPath()%>/userRole.html?id=${u.id }">分配角色</a>  
+                        <a href="<%=request.getContextPath()%>/delUser.html?id=${u.id }">删除</a>  
                     </td>  
                 </tr>  
             </c:forEach>  

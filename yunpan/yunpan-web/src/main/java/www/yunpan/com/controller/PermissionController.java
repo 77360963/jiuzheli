@@ -41,7 +41,7 @@ public class PermissionController {
 	@RequestMapping(value="/delPermission")	
 	public String delPermission(@RequestParam("id") String id){
 		permissionService.deletePermission(id);			
-		return "/view/permission";
+		return "redirect:/queryAllPermission.html";
 	}
 	
 	@RequestMapping(value="/queryAllPermission",method={RequestMethod.GET})

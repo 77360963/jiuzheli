@@ -34,7 +34,7 @@
                     </td>  
                     <td>  
                         <a href="<%=request.getContextPath()%>/rolePermission.html?id=${r.id}">分配权限</a>  
-                        <a href="">删除</a>  
+                        <a href="<%=request.getContextPath()%>/delRole.html?id=${r.id}"">删除</a>  
                     </td>  
                 </tr>  
             </c:forEach>  

@@ -17,10 +17,10 @@ public interface IResourceService {
     List<ResourceDomain> findAllResource();  
   
     // 根据uri查找资源  
-    ResourceEntity findResourceByURI(String uri);  
+    ResourceDomain findResourceByURI(String uri);  
   
     // 根据id查找资源  
-    ResourceEntity findResourceById(String id);  
+    ResourceDomain findResourceById(String id);  
   
     // 删除资源  
     void deleteResource(String id);  
