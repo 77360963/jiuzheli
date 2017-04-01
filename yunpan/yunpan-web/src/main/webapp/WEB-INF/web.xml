@@ -28,8 +28,12 @@
 			<param-value>classpath*:META-INF/spring/springmvc-servlet.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
-	</servlet>
+	</servlet>	
 	<!--为DispatcherServlet建立映射 -->
+	<servlet-mapping>
+		<servlet-name>springmvc</servlet-name>
+		<url-pattern>/login</url-pattern>
+	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>springmvc</servlet-name>
 		<url-pattern>*.html</url-pattern>
@@ -52,5 +56,9 @@
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
+	<welcome-file-list>
+	  <welcome-file>login</welcome-file>
+	</welcome-file-list>
 
 </web-app>

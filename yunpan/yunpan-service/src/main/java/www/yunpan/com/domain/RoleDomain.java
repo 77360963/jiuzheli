@@ -1,11 +1,17 @@
 package www.yunpan.com.domain;
 
-public class PermissionDomain {
+import java.util.List;
+
+//http://blog.csdn.net/driverking/article/details/6769553
+public class RoleDomain {
+
     private String id;
 
     private String name;
 
     private String description;
+    
+    private List<PermissionDomain> permissions; 
 
     public String getId() {
         return id;
@@ -30,21 +36,15 @@ public class PermissionDomain {
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
     }
+
+	public List<PermissionDomain> getPermissions() {
+		return permissions;
+	}
+
+	public void setPermissions(List<PermissionDomain> permissions) {
+		this.permissions = permissions;
+	}
     
-    @Override  
-    public boolean equals(Object obj) {  
-        if (this == obj)  
-            return true;  
-        if (obj == null)  
-            return false;  
-        if (getClass() != obj.getClass())  
-            return false;  
-        final PermissionDomain other = (PermissionDomain) obj;  
-        if (id == null) {  
-            if (other.id != null)  
-                return false;  
-        } else if (!id.equals(other.id))  
-            return false;  
-        return true;  
-    }  
+    
+
 }

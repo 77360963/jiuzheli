@@ -15,6 +15,8 @@
 	http://www.springframework.org/schema/mvc
     http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd"
 	default-autowire="byName">
+	
+	
 
 	<!--对web包中的所有类进行扫描，以完成Bean创建和自动依赖注入的功能 -->
 	<context:component-scan base-package="www.yunpan.com.controller" />
@@ -43,8 +45,15 @@
 			<mvc:mapping path="/**" /><!--这个地方时你要拦截得路径 我这个意思是拦截所有得URL -->
 			<bean class="www.yunpan.com.interceptor.TokenInterceptor" /><!--class文件路径改成你自己写得拦截器路径！！ -->
 		</mvc:interceptor>
+		
+		 <!-- 配置Token拦截器，防止用户重复提交数据 -->
+		<mvc:interceptor>
+			<mvc:mapping path="/**" /><!--这个地方时你要拦截得路径 我这个意思是拦截所有得URL -->
+			<bean class="www.yunpan.com.interceptor.OauthInterceptor" /><!--class文件路径改成你自己写得拦截器路径！！ -->
+		</mvc:interceptor>
+		
 	</mvc:interceptors>
-
+	
 
 
 </beans>

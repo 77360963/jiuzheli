@@ -9,5 +9,8 @@ public interface IPermissionRoleDao {
     
     
     void deletePermissionRole(String roleId);
+    
+    
+    void deletePermissionPermission(String permissionId);
 
 }

@@ -11,7 +11,7 @@
          <table width="90%">  
             <tr>  
                 <td align="right">  
-                    <a href="">添加资源</a>  
+                    <a href="<%=request.getContextPath()%>/addResource.html">添加资源</a>  
                 </td>  
             </tr>  
         </table>  
@@ -28,8 +28,8 @@
                     <td>${resource.description }</td>  
                     <td>${resource.permission.name}</td>  
                     <td>  
-                        <a href="">分配权限</a>  
-                        <a href="">删除</a>  
+                        <a href="<%=request.getContextPath()%>/editResource.html?id=${resource.id }">分配权限</a>  
+                        <a href="<%=request.getContextPath()%>/delResource.html?id=${resource.id }">删除</a>  
                     </td>  
                 </tr>  
             </c:forEach>  

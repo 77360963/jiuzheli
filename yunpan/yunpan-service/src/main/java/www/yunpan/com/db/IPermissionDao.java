@@ -17,5 +17,7 @@ public interface IPermissionDao {
   
     // 查找所有权限  
     List<PermissionEntity> findAllPermission();  
+    
+    List<PermissionEntity> queryPermissionByRole(String roleId);
 
 }

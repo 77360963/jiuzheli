@@ -5,12 +5,28 @@
     <id column="permission_id" property="permissionId" jdbcType="VARCHAR" />
     <id column="role_id" property="roleId" jdbcType="VARCHAR" />
   </resultMap>
+  
+    <delete id="deletePermissionRole" parameterType="java.lang.String" >
+    delete from permission_role
+    where role_id = #{roleId,jdbcType=VARCHAR}
+  </delete>
+  
+  
+   <delete id="deletePermissionPermission" parameterType="java.lang.String" >
+    delete from permission_role
+    where permission_id = #{permissionId,jdbcType=VARCHAR}
+  </delete>
+  
+  
+  
+  
+  
   <delete id="deleteByPrimaryKey" parameterType="www.yunpan.com.entity.PermissionRoleEntity" >
     delete from permission_role
     where permission_id = #{permissionId,jdbcType=VARCHAR}
       and role_id = #{roleId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="www.yunpan.com.entity.PermissionRoleEntity" >
+  <insert id="insertPermissionRole" parameterType="www.yunpan.com.entity.PermissionRoleEntity" >
     insert into permission_role (permission_id, role_id)
     values (#{permissionId,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR})
   </insert>

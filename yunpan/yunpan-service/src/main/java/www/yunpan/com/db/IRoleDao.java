@@ -3,6 +3,7 @@ package www.yunpan.com.db;
 import java.util.List;
 
 import www.yunpan.com.entity.RoleEntity;
+import www.yunpan.com.entity.UserEntity;
 
 public interface IRoleDao {
 	
@@ -20,5 +21,7 @@ public interface IRoleDao {
   
     // 查找所有角色  
     List<RoleEntity> fineAllRole();
+    
+    List<RoleEntity> queryUserByRole(String id);
 
 }
