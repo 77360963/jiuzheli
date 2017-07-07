@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+   
+   <bean id="velocityEngine"  class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+		<property name="resourceLoaderPath">
+			<value>classpath:/META-INF/velocity</value>
+		</property>
+	</bean>
+	
+	<bean id="baseFundInterfaceTemplate" abstract="true"  class="www.yunpan.com.utils.ContentVelocityTemplate">
+		<property name="velocityEngine" ref="velocityEngine" />
+		<property name="encoding" value="GBK" />
+	</bean>	
+
+	<bean id="personalXmlTemplate" parent="baseFundInterfaceTemplate">
+		<property name="vmLocation" value="personalxml.vm" />
+		<property name="encoding" value="utf-8" />
+	</bean>
+
+</beans>

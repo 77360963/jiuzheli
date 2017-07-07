@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<root>
+	<head>
+		<sign_type>MD5</sign_type>   
+		<service_version>1.0</service_version>
+		<input_charset>GBK</input_charset>
+		<sign>${sign}</sign>        
+		<sign_key_index>1</sign_key_index>
+	</head>
+	<body>
+		<mercid>${mercid}</mercid>
+		<lkl_ordno>${lkl_ordno}</lkl_ordno>
+		<finacctid>${finacctid}</finacctid>
+		<applytime>${applytime}</applytime>
+		<custname>${custname}</custname>
+		<certtype>${certtype}</certtype>
+		<certid>${certid}</certid>
+		<mobileno>${mobileno}</mobileno>
+	</body>
+</root>
