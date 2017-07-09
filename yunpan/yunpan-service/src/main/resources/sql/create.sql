@@ -46,3 +46,11 @@ create table if not exists user_role(
     constraint uRole_id_FK foreign key(role_id) references role(id),  
     constraint primary key(user_id,role_id)  
 )ENGINE=INNODB DEFAULT CHARSET=UTF8;
+
+
+create table if not exists fund_order(  
+    order_id varchar(40) not null,  
+    order_name varchar(40) not null,
+    order_version char(1),   
+    constraint primary key(order_id)  
+)ENGINE=INNODB DEFAULT CHARSET=UTF8;

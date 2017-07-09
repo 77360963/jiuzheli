@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="www.yunpan.com.db.FundOrderDao" >
+  <resultMap id="BaseResultMap" type="www.yunpan.com.entity.FundOrderEntity" >
+    <id column="order_id" property="orderId" jdbcType="VARCHAR" />
+    <result column="order_name" property="orderName" jdbcType="VARCHAR" />
+    <result column="order_version" property="orderVersion" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    order_id, order_name, order_version
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from fund_order
+    where order_id = #{orderId,jdbcType=VARCHAR}
+  </select>
+  
+   <select id="selectFundOrder" resultMap="BaseResultMap" parameterType="www.yunpan.com.entity.FundOrderEntity" >
+    select 
+    <include refid="Base_Column_List" />
+    from fund_order
+   
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from fund_order
+    where order_id = #{orderId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="www.yunpan.com.entity.FundOrderEntity" >
+    insert into fund_order (order_id, order_name, order_version
+      )
+    values (#{orderId,jdbcType=VARCHAR}, #{orderName,jdbcType=VARCHAR}, #{orderVersion,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="www.yunpan.com.entity.FundOrderEntity" >
+    insert into fund_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="orderName != null" >
+        order_name,
+      </if>
+      <if test="orderVersion != null" >
+        order_version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderName != null" >
+        #{orderName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderVersion != null" >
+        #{orderVersion,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="www.yunpan.com.entity.FundOrderEntity" >
+    update fund_order
+    <set >
+      <if test="orderName != null" >
+        order_name = #{orderName,jdbcType=VARCHAR},
+      </if>
+      <if test="orderVersion != null" >
+        order_version = #{orderVersion,jdbcType=CHAR},
+      </if>
+    </set>
+    where order_id = #{orderId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="www.yunpan.com.entity.FundOrderEntity" >
+    update fund_order
+    set order_name = #{orderName,jdbcType=VARCHAR},
+      order_version = #{orderVersion,jdbcType=CHAR}
+    where order_id = #{orderId,jdbcType=VARCHAR}
+  </update>
+</mapper>
